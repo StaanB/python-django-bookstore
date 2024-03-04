@@ -1,0 +1,20 @@
+# Arquivos de byte Python
+*.pyc
+*.pyo
+__pycache__
+
+# Ambiente virtual
+venv/
+env/
+
+# Arquivos de configuração
+*.env
+*.pyc
+*.pyo
+
+# Arquivos de log e banco de dados
+*.log
+*.sql
+
+# Outros arquivos e diretórios
+.DS_Store
