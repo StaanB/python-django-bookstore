@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -19,13 +20,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
+
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-ndf^4uf=+@j0nl7#caxql62ni$qulhuqgmu8o3-iqwpxx=@%--"
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "").split(" ")
 
 
 # Application definition
@@ -80,8 +85,12 @@ WSGI_APPLICATION = "bookstore.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": os.getenv("SQL_ENGINE", "django.db.backends.sqlite3"),
+        "NAME": os.getenv("SQL_DATABASE", os.path.join(BASE_DIR, "db.sqlite3")),
+        "USER": os.getenv("SQL_USER", "postgres"),
+        "PASSWORD": os.getenv("SQL_PASSWORD", ""),
+        "HOST": os.getenv("SQL_HOST", "localhost"),
+        "PORT": os.getenv("SQL_PORT", "5432"),
     }
 }
 
