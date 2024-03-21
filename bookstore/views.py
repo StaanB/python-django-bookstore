@@ -15,6 +15,7 @@ def update(request):
         """
         repo = git.Repo("/home/StaanB/bookstore")
         origin = repo.remotes.origin
+        # teste
 
         origin.pull()
         return HttpResponse("Updated code on PythonAnywhere")
