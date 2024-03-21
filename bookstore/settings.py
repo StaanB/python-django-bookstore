@@ -25,7 +25,7 @@ INTERNAL_IPS = [
 ]
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv("SECRET_KEY")
+SECRET_KEY = "2#ptzy#!19qy%rv1%=7vjff1fa)%04t!s)2qko4)=w-aj)@#zr"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG", "False") == "True"
